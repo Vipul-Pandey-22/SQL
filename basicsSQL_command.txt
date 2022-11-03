@@ -104,3 +104,20 @@ INSERT INTO emp_with_constraints(id, name, salary)
 VALUES (3, 'RRohit', 4000);
 
 SELECT * FROM `Test`.emp_with_constraints;
+--- Add alias name for constraints
+CREATE TABLE if not exists emp_with_constraints_alias
+(
+    id INT NOT NULL,
+    name CHAR(50) NOT NULL, 
+    salary DOUBLE,
+    hiring_date DATE DEFAULT '2021-01-01',
+    CONSTRAINT unique_id UNIQUE (id),
+    CONSTRAINT salary_check CHECK (salary > 1000)
+);
+
+--- Example 1 for Integrity failure with alias name
+--- Exception Will be thrown -> column id can't be null
+INSERT INTO emp_with_constraints_alias
+VALUES (1, 'Amit', 500, '2021-09-15');
+
+
