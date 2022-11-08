@@ -1,0 +1,45 @@
+create database Class_db2;
+use class_db2;
+
+create table if not exists employee
+(
+id int,
+name VARCHAR(50),
+city varchar(50),
+address varchar(50)
+);
+
+-- DESCRIBE THE TABLE
+desc employee;
+
+-- Insert Values Into The Table
+insert into  employee values(1, 'FirstEmpName', 'LUCKNOW', 'RJPM');
+
+-- ADD NEW COLUMN NAMES DOB IN THE TABLE
+alter table employee add DOB date;
+
+-- ADD MULTIPLE COLUMNS IN THE TABLE
+alter table employee add project varchar(100),
+add `language` varchar(100);
+
+-- ADD COLUMN BY POSITION IN TABLE
+	-- first
+alter table employee add column salary float first;
+
+-- MODIFY EXISTING COLUMN OR DATA TYPE IN A TABLE
+alter table employee modify name varchar (100);
+
+-- DELETE THE EXISTINGS COLUMN IN GIVEN TABLE
+alter table employee drop column city;
+
+-- RENAME THE COLUMN NAME `name' TO `full name`
+alter table employee rename column name to full_name;
+
+-- END
+-- THESE ALTER COMMANDS ARE THE SPECIFIC TO COLUMNS 
+
+-- ADD UNIQUE INTEGRITY CONSTRAINT ON ID COLUMN
+alter table employee add constraint id_unique unique(id);
+
+-- DROP CONSTRAINT FROM EXISTING TABLE
+alter table employee drop constraint id_unique;
