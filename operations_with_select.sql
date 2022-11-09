@@ -27,7 +27,7 @@ select count(*) as total_records from employee;
 
 -- Display specific columns
 select `name`, 
-		salary 
+	salary 
 from employee;
 
 -- How many unique hiring_dates in the employee table when employee joined it
@@ -38,7 +38,7 @@ select count(distinct(age)) from employee;
 
 -- Increment salary of each employee by 20% and display final result with new result
 select id, 
-	   `name`, 
+	`name`, 
        salary as old_salary, 
        round(salary + (salary * 20/100), 2) as incremented_salary 
 from employee;
@@ -47,8 +47,8 @@ from employee;
 select salary, id,
 CASE 
 	WHEN id = 1 THEN 'SALARY WOULD BE'
-    WHEN id = 2 THEN 'SALARY SHOULD BE'
-    ELSE 'IT SHOULD BE'
+    	WHEN id = 2 THEN 'SALARY SHOULD BE'
+    	ELSE 'IT SHOULD BE'
 END AS SALARIED
 FROM employee;
 
@@ -59,6 +59,6 @@ ORDER BY
 (
 	CASE
 		WHEN city is not null THEN hiring_date
-        ELSE city
+        	ELSE city
 	END
 );
