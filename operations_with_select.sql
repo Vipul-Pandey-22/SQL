@@ -42,3 +42,23 @@ select id,
        salary as old_salary, 
        round(salary + (salary * 20/100), 2) as incremented_salary 
 from employee;
+
+-- Select command with CASE
+select salary, id,
+CASE 
+	WHEN id = 1 THEN 'SALARY WOULD BE'
+    WHEN id = 2 THEN 'SALARY SHOULD BE'
+    ELSE 'IT SHOULD BE'
+END AS SALARIED
+FROM employee;
+
+-- Select command with ORDER BY and CASE
+select name, city, hiring_date
+from employee
+ORDER BY
+(
+	CASE
+		WHEN city is not null THEN hiring_date
+        ELSE city
+	END
+);
